@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background"
+    android:orientation="vertical"
+    android:padding="8dp" >
+	<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+    <TextView
+        android:id="@+id/textview_user_login_error"
+        style="@style/Common_TextView_Error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp" />
+
+    <EditText
+        android:id="@+id/edittext_user_login_username"
+        style="@style/Common_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="@string/user_username_hint"
+        android:text="wxw404@qq.com"
+        android:singleLine="true" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/edittext_user_login_password"
+        style="@style/Common_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="@string/user_password_hint"
+        android:inputType="textPassword"
+        android:text="111111"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/textview_user_login_forget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="@string/user_forget" />
+
+    <Button
+        android:id="@+id/button_user_login_login"
+        style="@style/Common_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:text="@string/user_login" />
+
+    <Button
+        android:id="@+id/button_user_login_regisiter"
+        style="@style/Common_Button.Reverse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/user_register" />
+	 </LinearLayout>
+	 
+	<TextView
+        android:id="@+id/textview_user_login_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/register_device" />
+	
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_weight="1"
+                android:background="@color/common_line" />
+
+            <TextView
+                style="@style/Common_TextView_Content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/user_third_login" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_weight="1"
+                android:background="@color/common_line" />
+        </LinearLayout>
+ <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+           
+            <ImageButton
+                android:id="@+id/button_user_login_weixin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"/>
+             <ImageButton
+                android:id="@+id/button_user_login_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp" />
+             <ImageButton
+                android:id="@+id/button_user_login_weibo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp" />
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

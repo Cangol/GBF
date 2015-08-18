@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="app_name">尚流奢汇</string>
+    <string name="test">test</string>
+    <string name="title_home">首页</string>
+    <string name="title_search">搜索</string>
+    <string name="title_category">分类</string>
+    <string name="title_brand">品牌</string>
+    <string name="title_mine">我的</string>
+    <string name="title_settings">设置</string>
+    <string name="title_feedback">意见反馈</string>
+    <string name="title_guide">用户向导</string>
+    <string name="title_aboutus">关于</string>
+    <string name="title_login">登录</string>
+    <string name="title_register">注册</string>
+    <string name="title_user">个人信息</string>
+    <string name="title_regisiter">注册</string>
+    <string name="title_changepassword">修改密码</string>
+    <string name="title_findpassword">找回密码</string>
+    <string name="title_changeinfo">修改信息</string>
+    <string name="title_select">已选择  %1$s/%2$s</string>
+    <string name="title_gallery">图片</string>
+    <string name="action_menu_search">搜索</string>
+    <string name="action_menu_done">完成</string>
+    <string name="menu_home">首页</string>
+    <string name="menu_brand">品牌</string>
+    <string name="menu_mine">我的</string>
+    <string name="menu_category">分类</string>
+
+</resources>

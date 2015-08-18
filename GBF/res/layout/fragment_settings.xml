@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearlayout_settings_push"
+        style="@style/Common_Settings_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textview_settings_push"
+            style="@style/Common_Settings_TextView_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:text="@string/settings_push" />
+
+        <CheckBox
+            android:id="@+id/radio_settings_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:background="@null" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_settings_guide"
+        style="@style/Common_Settings_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textview_settings_guide"
+            style="@style/Common_Settings_TextView_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_guide" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_settings_clearcache"
+        style="@style/Common_Settings_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textview_settings_clearcache"
+            style="@style/Common_Settings_TextView_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_clearcache" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_settings_feedback"
+        style="@style/Common_Settings_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textview_settings_feedback"
+            style="@style/Common_Settings_TextView_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_feedback" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_settings_help"
+        style="@style/Common_Settings_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textview_settings_help"
+            style="@style/Common_Settings_TextView_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_help" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_settings_about"
+        style="@style/Common_Settings_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" >
+
+        <TextView
+            android:id="@+id/textview_settings_about"
+            style="@style/Common_Settings_TextView_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_about" />
+    </LinearLayout>
+
+</LinearLayout>

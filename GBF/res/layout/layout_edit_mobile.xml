@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp" >
+
+    <com.azhuoinfo.gbf.view.ClearableEditText 
+        android:id="@+id/edittext_edit_mobile"
+        style="@style/Common_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:singleLine="true"
+        android:hint="@string/register_mobile_hint" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center_vertical|right"
+        android:orientation="horizontal" >
+
+        <com.azhuoinfo.gbf.view.ClearableEditText 
+            android:id="@+id/edittext_edit_mobile_code"
+            style="@style/Common_EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:hint="@string/register_verifycode_hint" />
+
+        <com.azhuoinfo.gbf.view.CountDownTextView
+            android:id="@+id/button_edit_mobile_sms"
+            android:layout_width="80dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:text="@string/register_verifycode" />
+    </LinearLayout>
+
+</LinearLayout>
