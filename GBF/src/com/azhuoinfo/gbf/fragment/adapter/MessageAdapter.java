@@ -36,36 +36,35 @@ public class MessageAdapter extends BaseAdapter<Message> {
 		}else{
 			convertView = this.mInflater.inflate(R.layout.listview_item_message, parent, false);
 			holder=new ViewHolder();
-			holder.layout=convertView.findViewById(R.id.listview_item_message_layout);
-			holder.title=(TextView) convertView.findViewById(R.id.listview_item_message_title);
+			holder.nickname=(TextView) convertView.findViewById(R.id.listview_item_message_nickname);
 			holder.content=(TextView) convertView.findViewById(R.id.listview_item_message_content);
 			holder.time=(TextView) convertView.findViewById(R.id.listview_item_message_time);
-			holder.image=(ImageView) convertView.findViewById(R.id.listview_item_message_image);
+			holder.avatar=(ImageView) convertView.findViewById(R.id.listview_item_message_avatar);
 			convertView.setTag(holder);
 		}
-		holder.title.setText(StringUtils.null2Empty(item.getTitle()));
+		holder.nickname.setText(StringUtils.null2Empty(item.getTitle()));
 		holder.content.setText(StringUtils.null2Empty(item.getContent()));
 		holder.time.setText(TimeUtils.formatLatelyTime(item.getTimestamp()));
-		mImageLoader.displayImage(item.getImage(),holder.image,mDisplayImageOptions);
+		mImageLoader.displayImage(item.getImage(),holder.avatar,mDisplayImageOptions);
 		if(item.getStatus()==0){
-			holder.title.getPaint().setFakeBoldText(true);
+			holder.nickname.getPaint().setFakeBoldText(true);
 			holder.content.getPaint().setFakeBoldText(true);
 			holder.content.setTextColor(mContext.getResources().getColor(R.color.common_title));
-			holder.time.setTextColor(mContext.getResources().getColor(R.color.text_blue));
+			holder.time.setTextColor(mContext.getResources().getColor(R.color.text_black));
 		}else{
-			holder.title.getPaint().setFakeBoldText(false);
+			holder.nickname.getPaint().setFakeBoldText(false);
 			holder.content.getPaint().setFakeBoldText(false);
 			holder.content.setTextColor(mContext.getResources().getColor(R.color.common_content));
-			holder.time.setTextColor(mContext.getResources().getColor(R.color.common_hint));
+			holder.time.setTextColor(mContext.getResources().getColor(R.color.text_grey));
 		}
 		
 		return convertView;
 	}
 	static class ViewHolder{
 		View layout;
-		TextView title;
+		TextView nickname;
 		TextView content;
 		TextView time;
-		ImageView image;
+		ImageView avatar;
 	}
 }

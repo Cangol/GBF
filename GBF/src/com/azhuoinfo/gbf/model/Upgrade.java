@@ -5,6 +5,7 @@ import java.io.Serializable;
 import mobi.cangol.mobile.parser.Element;
 
 public class Upgrade implements Serializable{
+	
 	/**
 	 * 
 	 */
@@ -43,6 +44,4 @@ public class Upgrade implements Serializable{
 		return "Upgrade [url=" + url + ", version=" + version + ", desc="
 				+ desc + ", minVersion=" + minVersion + "]";
 	}
-	
-	
 }

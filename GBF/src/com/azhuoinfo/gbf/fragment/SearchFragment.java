@@ -1,21 +1,10 @@
 package com.azhuoinfo.gbf.fragment;
 
-import java.util.List;
-
-import mobi.cangol.mobile.actionbar.ActionMenu;
 import mobi.cangol.mobile.actionbar.ActionMenuItem;
 import mobi.cangol.mobile.actionbar.view.SearchView;
 import mobi.cangol.mobile.actionbar.view.SearchView.OnSearchTextListener;
 import mobi.cangol.mobile.base.BaseContentFragment;
 import mobi.cangol.mobile.base.FragmentInfo;
-import mobi.cangol.mobile.logging.Log;
-import com.azhuoinfo.gbf.R;
-import com.azhuoinfo.gbf.api.ApiContants;
-import com.azhuoinfo.gbf.api.task.ApiTask;
-import com.azhuoinfo.gbf.api.task.OnDataLoader;
-import com.azhuoinfo.gbf.model.PollArea;
-import com.azhuoinfo.gbf.view.PromptView;
-import com.azhuoinfo.gbf.view.PromptView.OnPromptClickListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +13,18 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.azhuoinfo.gbf.R;
+import com.azhuoinfo.gbf.fragment.adapter.TagAdapter;
+import com.azhuoinfo.gbf.view.AllGridView;
+import com.azhuoinfo.gbf.view.PromptView;
+import com.azhuoinfo.gbf.view.PromptView.OnPromptClickListener;
+
 public class SearchFragment extends BaseContentFragment{
 	
 	private PromptView mPromptView;
 	private ListView mListView;
-	
+	private AllGridView mAllGridView;
+	private TagAdapter mTagAdapter;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
@@ -37,7 +33,7 @@ public class SearchFragment extends BaseContentFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		View v = inflater.inflate(R.layout.fragment_list_swipe,container,false);
+		View v = inflater.inflate(R.layout.fragment_search_list,container,false);
 		return v;
 	}
 	
@@ -58,6 +54,9 @@ public class SearchFragment extends BaseContentFragment{
 	protected void findViews(View view) {
 		mPromptView=(PromptView) findViewById(R.id.promptView);
 		mListView=(ListView) findViewById(R.id.listView);
+		mAllGridView=(AllGridView) this.findViewById(R.id.gridView);
+		mTagAdapter=new TagAdapter(getActivity());
+		mAllGridView.setAdapter(mTagAdapter);
 	}
 
 	@Override
@@ -74,33 +73,45 @@ public class SearchFragment extends BaseContentFragment{
 			}
 			
 		});
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+			}
+		});
+		mAllGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+			}
+		});
 	}
 
 	@Override
 	protected void initData(Bundle savedInstanceState) {
 		
 	}
-	@Override
-	protected boolean onMenuActionCreated(ActionMenu actionMenu) {
-		actionMenu.add(new ActionMenuItem(1, R.string.action_menu_search, R.drawable.ic_action_search, 1));
-		return true;
-	}
+	private void doSearch(){
+		SearchView searchView=this.getCustomActionBar().startSearchMode();
+		searchView.setOnSearchTextListener(new OnSearchTextListener(){
 
-	@Override
+			@Override
+			public boolean onSearchText(String keywords) {
+				getCustomActionBar().stopSearchMode();
+				getSearchList(keywords);
+				return true;
+			}
+			
+		});
+	}
 	protected boolean onMenuActionSelected(ActionMenuItem action) {
 		switch (action.getId()) {
 			case 1 :
-				SearchView searchView=this.getCustomActionBar().startSearchMode();
-				searchView.setOnSearchTextListener(new OnSearchTextListener(){
-
-					@Override
-					public boolean onSearchText(String keywords) {
-						getCustomActionBar().stopSearchMode();
-						getSearchList(keywords);
-						return true;
-					}
-					
-				});
+				
 				break;
 		}
 		return super.onMenuActionSelected(action);

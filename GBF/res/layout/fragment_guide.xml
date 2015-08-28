@@ -27,7 +27,7 @@
     
     <Button
         android:id="@+id/setting_userGuide_start"
-        style="@style/Common_Button.Reverse"
+        style="@style/Button.Grey.Reverse"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:padding="12dp"

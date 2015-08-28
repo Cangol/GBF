@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_details_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom" >
+
+    <TextView
+        android:id="@+id/textview_details_bottom_contact"
+        style="@style/Button.White"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_weight="1"
+        android:singleLine="true"
+        android:text="@string/details_contact" />
+
+    <TextView
+        android:id="@+id/textview_details_bottom_addcar"
+        style="@style/Button.Grey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_weight="1"
+        android:singleLine="true"
+        android:text="@string/details_addcar" />
+
+    <TextView
+        android:id="@+id/textview_details_bottom_buy"
+        style="@style/Button.Yellow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="12dp"
+        android:singleLine="true"
+        android:text="@string/details_buy" />
+
+</LinearLayout>

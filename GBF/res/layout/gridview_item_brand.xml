@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:foreground="@drawable/btn_image_selector"
+	android:padding="1dp" >   
+
+    <ImageView
+        android:id="@+id/gridview_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_photo_default"
+        android:background="@drawable/common_photo_bg"/>
+	
+</FrameLayout>

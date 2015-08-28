@@ -59,5 +59,7 @@
 		<attr name="android:scaleType"/>
 	</declare-styleable>
 	
-    	
+    	 <declare-styleable name="LeftGallery">
+        <attr name="spacing" format="dimension" />
+    </declare-styleable>
 </resources>

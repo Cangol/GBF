@@ -28,6 +28,7 @@ public class GalleryImageActivity extends BaseActionBarActivity {
 	private ImagePagerAdapter mDataAdapter;
 	private ArrayList<ImageSelect> mImageList;
 	private int position=0;
+	private int maxSelect=1;
 	private ImageSelect mImage;
 	private boolean isLocalImage;
 	private boolean isSelected;
@@ -36,8 +37,10 @@ public class GalleryImageActivity extends BaseActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_gallery_image);
 		this.setActionbarOverlay(true);
+		this.getCustomActionBar().displayUpIndicator();
 		this.getCustomActionBar().setBackgroundResource(R.color.statusbar_bg);
 		this.getCustomActionBar().setTitleGravity(Gravity.CENTER);
+		maxSelect=this.getIntent().getIntExtra("max_select", 1);
 		position=this.getIntent().getIntExtra("position", 0);
 		isLocalImage=this.getIntent().getBooleanExtra("isLocalImage", false);
 		isSelected=this.getIntent().getBooleanExtra("isSelected", false);
@@ -62,7 +65,7 @@ public class GalleryImageActivity extends BaseActionBarActivity {
 		mDataAdapter.addSelected(ImageSelect.listOf(select));
 		mDataAdapter.setSelected(isSelected);
 		if(isSelected)
-		setTitle(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),Constants.MAX_SELECTED));
+		setTitle(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),maxSelect));
 		mDataAdapter.setOnItemChangeListener(new OnItemChangeListener(){
 				@Override
 				public void onItemChange(int currentPosition){
@@ -76,12 +79,12 @@ public class GalleryImageActivity extends BaseActionBarActivity {
 
 			@Override
 			public void onClickSelect(int position) {
-				if(mDataAdapter.getSelected().size()<Constants.MAX_SELECTED||mDataAdapter.getItemSelected(position)){
+				if(mDataAdapter.getSelected().size()<maxSelect||mDataAdapter.getItemSelected(position)){
 					mDataAdapter.setItemSelected(position);
-					setTitle(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),Constants.MAX_SELECTED));
+					setTitle(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),maxSelect));
 					mDataAdapter.notifyDataSetChanged();
 				}else{
-					showToast(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),Constants.MAX_SELECTED));
+					showToast(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),maxSelect));
 				}
 				
 			}
@@ -105,12 +108,12 @@ public class GalleryImageActivity extends BaseActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				if(!mDataAdapter.isSelected())return;
-				if(mDataAdapter.getSelected().size()<Constants.MAX_SELECTED||mDataAdapter.getItemSelected(position)){
+				if(mDataAdapter.getSelected().size()<maxSelect||mDataAdapter.getItemSelected(position)){
 					mDataAdapter.setItemSelected(position);
-					setTitle(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),Constants.MAX_SELECTED));
+					setTitle(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),maxSelect));
 					mDataAdapter.notifyDataSetChanged();
 				}else{
-					showToast(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),Constants.MAX_SELECTED));
+					showToast(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),maxSelect));
 				}
 				mSelectView.setSelected(mDataAdapter.getItemSelected(position));
 			}

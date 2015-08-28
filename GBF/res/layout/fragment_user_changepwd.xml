@@ -3,51 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fragment_background"
-    android:layout_margin="8dp"
+    android:padding="8dp"
     android:orientation="vertical" >
-	<TextView
-        android:id="@+id/textview_user_changepwd_error"
-         style="@style/Common_TextView_Error"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp" />
-	
-    <EditText
-        android:id="@+id/edittext_user_changepwd_password"
-        style="@style/Common_EditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/user_oldpassword_hint"
-        android:singleLine="true"
-        android:inputType="textPassword"
-        android:layout_margin="8dp">
-    </EditText>
-	<EditText
-        android:id="@+id/edittext_user_changepwd_newpassword"
-        style="@style/Common_EditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/user_newpassword_hint"
-        android:singleLine="true"
-        android:layout_margin="8dp"
-        android:inputType="textPassword" />
-    <EditText
-        android:id="@+id/edittext_user_changepwd_repassword"
-        style="@style/Common_EditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/user_renewpassword_hint"
-        android:singleLine="true"
-        android:layout_margin="8dp"
-        android:inputType="textPassword" />
+	 <EditText
+            android:id="@+id/edittext_user_changepwd_passsword"
+            style="@style/Common_EditText.Transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/user_password_hint"
+            android:singleLine="true">
+        </EditText>
+        <include layout="@layout/common_view_line_white" />
+		<TextView
+		    android:id="@+id/textview_user_changepwd_password_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edittext_user_changepwd_repassword"
+            style="@style/Common_EditText.Transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/user_repassword_hint"
+            android:inputType="textPassword"
+            android:singleLine="true"/>
+        <include layout="@layout/common_view_line_white" />
+        <TextView
+            android:id="@+id/edittext_user_changepwd_repassword_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/button_user_changepwd_submit"
-        style="@style/Common_Button"
+        style="@style/Button.Yellow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/user_confirm" />
 
 </LinearLayout>

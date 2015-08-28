@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/common_listview_item_selector"
+    android:descendantFocusability="beforeDescendants"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <com.azhuoinfo.gbf.view.imageview.round.RoundedImageView
+            android:id="@+id/listview_item_sale_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_face_man"
+            app:border_color="#f2f2f2"
+            app:border_width="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical" >
+                <TextView
+                    android:id="@+id/listview_item_sale_title"
+                    style="@style/Common_TextView_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="2"
+                    android:text="@string/test" />
+
+            <TextView
+                android:id="@+id/listview_item_sale_price"
+                style="@style/Common_TextView_Content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/test" />
+            <TextView
+                android:id="@+id/listview_item_sale_content"
+                style="@style/Common_TextView_Content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/test" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/common_view_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|right"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/listview_item_sale_out"
+            style="@style/TextView.Grey.Reverse"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:singleLine="true"
+            android:text="@string/sale_out" />
+
+        <TextView
+            android:id="@+id/listview_item_sale_up"
+            style="@style/TextView.Grey.Reverse"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:singleLine="true"
+            android:text="@string/sale_up" />
+    </LinearLayout>
+
+</LinearLayout>

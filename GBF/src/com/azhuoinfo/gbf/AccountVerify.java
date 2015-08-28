@@ -29,7 +29,7 @@ public class AccountVerify {
 	private static final String REGISTRATION_ID_USERID="REGISTRATION_ID_USERID";
 	private User user;
 	private UserAuth userAuth;
-	private boolean isLogin;
+	private boolean isLogin=false;
 	private Application application;
 	private ApiContants apiContants;
 	private SharedPreferences sp;

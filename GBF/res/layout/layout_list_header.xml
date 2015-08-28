@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_list_header"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#36000000"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/radio_goods_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/goods_tab_bg"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="16dp" >
+
+        <RadioButton
+            android:id="@+id/radio_goods_order"
+            style="@style/Goods_Tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/goods_order" />
+
+        <RadioButton
+            android:id="@+id/radio_goods_brand"
+            style="@style/Goods_Tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/goods_brand" />
+
+        <RadioButton
+            android:id="@+id/radio_goods_category"
+            style="@style/Goods_Tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/goods_category" />
+
+        <RadioButton
+            android:id="@+id/radio_goods_filter"
+            style="@style/Goods_Tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/goods_filter" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/layout_goods_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textview_goods_order_new"
+            style="@style/TextView.Grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/goods_order_new" />
+
+        <TextView
+            android:id="@+id/textview_goods_order_hot"
+            style="@style/TextView.Grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/goods_order_hot" />
+
+        <TextView
+            android:id="@+id/textview_goods_order_priceup"
+            style="@style/TextView.Grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/goods_order_priceup" />
+
+        <TextView
+            android:id="@+id/textview_goods_order_pricedown"
+            style="@style/TextView.Grey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/goods_order_pricedown" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_goods_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="gone" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_goods_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="gone" >
+
+        <TextView
+            style="@style/TextView.Grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/category_bag" />
+
+        <include layout="@layout/common_view_line" />
+
+        <com.azhuoinfo.gbf.view.AllGridView
+            android:id="@+id/allgridview_category_bags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:numColumns="4" />
+
+        <TextView
+            style="@style/TextView.Grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/category_watch" />
+
+        <include layout="@layout/common_view_line" />
+
+        <com.azhuoinfo.gbf.view.AllGridView
+            android:id="@+id/allgridview_category_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:numColumns="4" />
+
+        <TextView
+            style="@style/TextView.Grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/category_jewelry" />
+
+        <include layout="@layout/common_view_line" />
+
+        <com.azhuoinfo.gbf.view.AllGridView
+            android:id="@+id/allgridview_category_jewelry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:numColumns="4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_goods_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="gone" >
+
+        <TextView
+            style="@style/TextView.Grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/filter_price" />
+
+        <include layout="@layout/common_view_line" />
+
+        <TextView
+            style="@style/TextView.Grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/filter_crowd" />
+
+        <include layout="@layout/common_view_line" />
+
+        <TextView
+            style="@style/TextView.Grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/filter_quality" />
+
+        <include layout="@layout/common_view_line" />
+
+        <Button
+            android:id="@+id/button_publish_images_next"
+            style="@style/Button.Yellow"
+            android:layout_marginTop="8dp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/publish_confirm" />
+    </LinearLayout>
+
+</LinearLayout>

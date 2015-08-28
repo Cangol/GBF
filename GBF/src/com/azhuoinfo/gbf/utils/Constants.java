@@ -50,5 +50,4 @@ public class Constants {
 	public static final String DATA_GALLERY_PICK = "DATA_GALLERY_PICK";
 	public static final String DATA_GALLERY_MULTIPLE_PICK = "DATA_GALLERY_MULTIPLE_PICK";
 	
-	public static final int MAX_SELECTED=8;
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <com.azhuoinfo.gbf.view.AutoGallery
+        android:id="@+id/autogallery_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textview_menu_checkup"
+            style="@style/Menu_Item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_menu_checkup_selector"
+            android:text="@string/home_menu_checkup" />
+
+        <TextView
+            android:id="@+id/textview_menu_local"
+            style="@style/Menu_Item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_menu_local_selector"
+            android:text="@string/home_menu_local" />
+
+        <TextView
+            android:id="@+id/textview_menu_publish"
+            style="@style/Menu_Item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_menu_publish_selector"
+            android:text="@string/home_menu_publish" />
+
+        <TextView
+            android:id="@+id/textview_menu_guess"
+            style="@style/Menu_Item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_menu_guess_selector"
+            android:text="@string/home_menu_guess" />
+    </LinearLayout>
+
+</LinearLayout>

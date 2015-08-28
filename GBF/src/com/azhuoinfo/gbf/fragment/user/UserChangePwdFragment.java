@@ -4,6 +4,7 @@ import mobi.cangol.mobile.base.BaseContentFragment;
 import mobi.cangol.mobile.base.FragmentInfo;
 import mobi.cangol.mobile.logging.Log;
 import mobi.cangol.mobile.utils.StringUtils;
+
 import com.azhuoinfo.gbf.AccountVerify;
 import com.azhuoinfo.gbf.R;
 import com.azhuoinfo.gbf.api.ApiContants;
@@ -11,6 +12,8 @@ import com.azhuoinfo.gbf.api.task.ApiTask;
 import com.azhuoinfo.gbf.api.task.OnDataLoader;
 import com.azhuoinfo.gbf.view.LoadingDialog;
 import com.azhuoinfo.gbf.view.Validator;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,17 +55,18 @@ public class UserChangePwdFragment extends BaseContentFragment{
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		initViews(savedInstanceState);
-		initData(savedInstanceState);
+		//initViews(savedInstanceState);
+		//initData(savedInstanceState);
 	}
 	
 	@Override
 	protected void findViews(View view) {
-		mErrorText=(TextView) this.findViewById(R.id.textview_user_changepwd_error);
-		mOldPwdText=(EditText) this.findViewById(R.id.edittext_user_changepwd_password);
-		mNewPwdText=(EditText) this.findViewById(R.id.edittext_user_changepwd_newpassword);
-		mRePwdText=(EditText) this.findViewById(R.id.edittext_user_changepwd_repassword);
-		mSubmitBtn=(Button) this.findViewById(R.id.button_user_changepwd_submit);
+		this.getCustomActionBar().setBackgroundColor(Color.TRANSPARENT);
+//		mErrorText=(TextView) this.findViewById(R.id.textview_user_changepwd_error);
+//		mOldPwdText=(EditText) this.findViewById(R.id.edittext_user_changepwd_password);
+//		mNewPwdText=(EditText) this.findViewById(R.id.edittext_user_changepwd_newpassword);
+//		mRePwdText=(EditText) this.findViewById(R.id.edittext_user_changepwd_repassword);
+//		mSubmitBtn=(Button) this.findViewById(R.id.button_user_changepwd_submit);
 	}
 
 	@Override
@@ -147,5 +151,10 @@ public class UserChangePwdFragment extends BaseContentFragment{
 	@Override
 	public void onStart() {
 		super.onStart();
+	}
+	@Override
+	public void onDestroyView() {
+		this.getCustomActionBar().setBackgroundResource(R.color.actionbar_background);
+		super.onDestroyView();
 	}
 }

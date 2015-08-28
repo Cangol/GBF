@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape>
+			<stroke android:color="@color/common_btn_reverse_enable" android:width="1px"/>
+			<corners android:radius="4dp"/>
+		</shape>
+    </item>
+    <item android:state_pressed="true">
+		 <layer-list>
+			    <item>
+			        <shape>
+			            <stroke android:color="@color/btn_grey" android:width="1px"/>
+			            <corners android:radius="4dp"/>
+			        </shape>
+			    </item>
+			    <item>
+			        <shape>
+			            <stroke android:color="@color/common_btn_reverse_pressed" android:width="1px"/>
+			            <corners android:radius="4dp"/>
+			        </shape>
+			    </item>
+			</layer-list>
+    </item>
+    <item >
+        <shape>
+			<stroke android:color="@color/btn_grey" android:width="1px"/>
+			<corners android:radius="4dp"/>
+		</shape>
+    </item>
+</selector>

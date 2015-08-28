@@ -20,11 +20,173 @@
     <string name="title_changeinfo">修改信息</string>
     <string name="title_select">已选择  %1$s/%2$s</string>
     <string name="title_gallery">图片</string>
+    <string name="title_mine_friend">我的好友</string>
+    <string name="title_mine_message">我的消息</string>
+    <string name="title_mine_favorite">我的收藏</string>
+    <string name="title_mine_order">我的消费</string>
+    <string name="title_mine_sales">我的寄卖</string>
+    <string name="title_shopping_car">购物车</string>
+    <string name="title_chat">聊天</string>
+    <string name="title_publish">发布</string>
+     <string name="title_guess_quality">猜成色</string>
     <string name="action_menu_search">搜索</string>
     <string name="action_menu_done">完成</string>
+    <string name="action_menu_register">注册</string>
     <string name="menu_home">首页</string>
     <string name="menu_brand">品牌</string>
     <string name="menu_mine">我的</string>
     <string name="menu_category">分类</string>
-
+    <string name="mine_menu_favorite">我的收藏</string>
+    <string name="mine_menu_order">我的消费</string>
+    <string name="mine_menu_sales">我的寄卖</string>
+    <string name="mine_menu_shopcar">购物车</string>
+    <string name="mine_menu_friend">我的好友</string>
+    <string name="mine_menu_member">申请VIP</string>
+    <string name="friend_add">添加好友</string>
+    <string name="friend_remove">解除好友</string>
+    <string name="order_exchange">退货/换货</string>
+    <string name="order_delivery">物流追踪</string>
+    <string name="order_details">查看详细</string>
+    <string name="car_delete">删除</string>
+    <string name="car_total"><Data><![CDATA[合计: <font color="#cf9d26">￥%1$s</font>]]></Data></string>
+    <string name="car_checkout">结算</string>
+    <string name="car_selectall">全选</string>
+    <string name="favorite_buy">购买商品</string>
+    <string name="favorite_cancel">取消收藏</string>
+    <string name="sale_out">已售</string>
+    <string name="sale_up">下架</string>
+    <string name="member_text">此功能只支持网页版申请</string>
+    <string name="refundment_cause">*退款原因</string>
+    <string name="refundment_cause_hint">请选择退款原因</string>
+    <string name="refundment_price">*退款金额</string>
+    <string name="refundment_mark">退款说明</string>
+    <string name="refundment_mark_image_hint">每张图片大小不得超过5M，最多三张，支持GIF,JPG,PNG,BMP格式</string>
+    <string name="user_private">(不公开)</string>
+    <string name="user_public">(公开)</string>
+    <string name="user_signature">个性签名</string>
+    <string name="user_real_name">真实姓名</string>
+    <string name="user_sfzh">身份证号码</string>
+    <string name="user_sfz_image">身份证照片</string>
+    <string name="user_sfz_image_hint">(需提供正反面)</string>
+    <string name="user_sfz_sc_image">手持身份证照片</string>
+    <string name="user_address">地址</string>
+    <string name="user_address_add">添加新地址</string>
+    <string name="user_register_hint"><Data><![CDATA[还不是尚流奢汇会员？<font color="#cf9d26"><u>立即注册</u></font>]]></Data></string>
+    <string name="user_login_hint"><Data><![CDATA[已经是尚流奢汇会员？<font color="#cf9d26"><u>立即登录</u></font>]]></Data></string>
+    <string name="user_remember_account">记住账号</string>
+    <string name="user_remember_password">记住密码</string>
+    <string name="user_nickname_hint">请输入昵称</string>
+    <string name="user_mobile_hint">请输入手机号</string>
+    <string name="user_verifycode_hint">请输入验证码</string>
+    <string name="user_password_hint">请输入密码</string>
+    <string name="user_repassword_hint">请确认输入密码</string>
+    <string name="user_send_verifycode">发送验证码</string>
+    <string name="user_invitecode_hint">请输入四位邀请码</string>
+    <string name="user_uninvitecode_hint">没有注册码可以直接点注册完成</string>
+    <string name="user_register_one">下一步</string>
+    <string name="user_register_two">完成</string>
+    <string name="user_register_three">注册完成</string>
+    <string name="friend_qrcode">扫一扫添加好友</string>
+    <string name="friend_contact">手机添加好友</string>
+    <string name="social_friend">好友</string>
+    <string name="social_message">消息</string>
+    <string name="search_hint">搜索商品和品牌</string>
+    <string name="details_title"><Data><![CDATA[<font color="#cf9d26">%1$s成新</font> %2$s]]></Data></string>
+    <string name="details_contact">联系卖家</string>
+    <string name="details_addcar">加入购物车</string>
+    <string name="details_buy">立即购买</string>
+    <string name="details_info">商品信息</string>
+    <string name="details_rating">成色评估</string>
+    <string name="details_brand_story">品牌故事</string>
+    
+    <string name="home_menu_checkup">第三方鉴定</string>
+	<string name="home_menu_local">附近卖家</string>
+	<string name="home_menu_publish">发布</string>
+	<string name="home_menu_guess">猜成色</string>
+	
+	<string name="category_tips">请选择想发布的产品类型</string>
+	<string name="category_bag">包袋 Bags</string>
+	<string name="category_watch">腕表 Watches</string>
+	<string name="category_jewelry">首饰 Jewelry</string>
+	
+	<string name="publish_evaluate">去评估</string>
+	<string name="publish_next">下一步</string>
+	<string name="publish_prev">上一步</string>
+	<string name="publish_confirm">确定</string>
+	
+	<string name="publish_quality">成色评估</string>
+	<string name="publish_quality_hint">(该产品为BC级70成以下不能寄售)</string>
+	<string name="publish_quality_desc">成色描述</string>
+	<string name="publish_quality_report">成色报告</string>
+	<string name="publish_quality_report_no">编号</string>
+	<string name="publish_quality_result">参考结论:</string>
+	<string name="publish_quality_result_desc">该产品为AB级84新,可以寄售</string>	
+	
+	<string name="publish_images">照片上传</string>
+	<string name="publish_images_hint">(建议阳光下白底拍照)</string>
+	<string name="publish_images_sevices">联系客服</string>
+	
+	<string name="publish_details">商品描述</string>
+	<string name="publish_details_hint">为必填项</string>
+	<string name="publish_details_brand">品牌</string>
+	<string name="publish_details_brand_hint">请选择品牌</string>
+	<string name="publish_details_category">品类</string>
+	<string name="publish_details_category_hint">请选择商品品类</string>
+	<string name="publish_details_material">材质</string>
+	<string name="publish_details_material_hint">请选择材质</string>
+	<string name="publish_details_price">售价</string>
+	<string name="publish_details_price_hint">请填写售价</string>
+	<string name="publish_details_model">型号</string>
+	<string name="publish_details_model_hint">请选择型号</string>
+	<string name="publish_details_marketprice">市场价</string>
+	<string name="publish_details_marketprice_hint">请填写市场价</string>
+	<string name="publish_details_color">颜色</string>
+	<string name="publish_details_color_hint">请填写商品颜色</string>
+	<string name="publish_details_quality">商品成色</string>
+	<string name="publish_details_quality_hint">请填写商品成色</string>
+	<string name="publish_details_num">数量</string>
+	<string name="publish_details_num_hint">请填商品数量</string>
+	<string name="publish_details_discount">折扣</string>
+	<string name="publish_details_discount_hint">请填商品折扣</string>
+	<string name="publish_details_story">宝贝故事</string>
+	<string name="publish_details_story_hint">请讲讲您更他的小故事</string>
+	<string name="publish_details_crowd">适合人群</string>
+	<string name="publish_details_crowd_hint">请选择适合的人群</string>
+	<string name="publish_details_posttime">发货时间</string>
+	<string name="publish_details_posttime_hint">请填写发货时间</string>
+	<string name="publish_details_keywords">搜索关键词</string>
+	<string name="publish_details_keywords_hint">请填写您需要搜索到商品的关键词，中间用","号隔开</string>
+	
+	
+	<string name="goods_order">排序</string>
+	<string name="goods_order_new">最新</string>
+	<string name="goods_order_hot">最热</string>
+	<string name="goods_order_priceup">价格↑</string>
+	<string name="goods_order_pricedown">价格↓</string>
+	
+	<string name="goods_brand">品牌</string>
+	<string name="goods_category">类目</string>
+	<string name="goods_filter">筛选</string>
+	
+	<string name="filter_quality">成色</string>
+	<string-array name="filter_quality_array">
+        <item>全新</item>
+        <item>95-99新</item>
+        <item>90-94新</item>
+        <item>85-89新</item>
+        <item>80-84新</item>
+        <item>70-79新</item>
+    </string-array>
+	<string name="filter_price">价格</string>
+	<string-array name="filter_price_array">
+        <item>￥0-300</item>
+        <item>￥301-2000</item>
+        <item>￥2001-5000</item>
+        <item>￥5001-10000</item>
+    </string-array>
+	<string name="filter_crowd">适合人群</string>
+	<string-array name="filter_crowd_array">
+        <item>男士</item>
+        <item>女士</item>
+    </string-array>
 </resources>

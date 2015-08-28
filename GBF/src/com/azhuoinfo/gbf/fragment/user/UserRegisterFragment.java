@@ -4,6 +4,7 @@ import mobi.cangol.mobile.base.BaseContentFragment;
 import mobi.cangol.mobile.base.FragmentInfo;
 import mobi.cangol.mobile.logging.Log;
 import mobi.cangol.mobile.utils.StringUtils;
+
 import com.azhuoinfo.gbf.AccountVerify;
 import com.azhuoinfo.gbf.R;
 import com.azhuoinfo.gbf.api.ApiContants;
@@ -14,7 +15,10 @@ import com.azhuoinfo.gbf.view.CountDownTextView;
 import com.azhuoinfo.gbf.view.CountDownTextView.OnCountDownListener;
 import com.azhuoinfo.gbf.view.LoadingDialog;
 import com.azhuoinfo.gbf.view.Validator;
+
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
@@ -46,6 +50,7 @@ public class UserRegisterFragment extends BaseContentFragment{
 	private Button eRegisterBtn;
 	private CheckBox eDisplayRbtn;
 	
+	private TextView mLoginHintText;
 	private RadioGroup mRadioGroup;
 	
 	private AccountVerify mAccountVerify;
@@ -72,47 +77,35 @@ public class UserRegisterFragment extends BaseContentFragment{
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		initViews(savedInstanceState);
-		initData(savedInstanceState);
+		//initViews(savedInstanceState);
+		//initData(savedInstanceState);
 	}
 	@Override
 	protected void findViews(View view) {
-		mRadioGroup=(RadioGroup) this.findViewById(R.id.radio_user_register_tab);
+		this.getCustomActionBar().setBackgroundColor(Color.TRANSPARENT);
+//		mLayout=this.findViewById(R.id.layout_user_register_mobile);
+//		mErrorText=(TextView) this.findViewById(R.id.textview_user_register_mobile_error);
+//		mUsernameText=(EditText) this.findViewById(R.id.edittext_user_register_mobile);
+//		mPasswordText=(EditText) this.findViewById(R.id.edittext_user_register_mobile_password);
+//		mRegisterBtn=(Button) this.findViewById(R.id.button_user_register_mobile_submit);
+//		mSendBtn=(CountDownTextView) this.findViewById(R.id.button_user_register_mobile_sms);
+//		mVerifyCodeText=(EditText) this.findViewById(R.id.edittext_user_register_mobile_code);
+//		mDisplayRbtn=(CheckBox) this.findViewById(R.id.radio_user_register_mobile_display);
+//		
+//		eLayout=this.findViewById(R.id.layout_user_register_email);
+//		eErrorText=(TextView) this.findViewById(R.id.textview_user_register_email_error);
+//		eUsernameText=(EditText) this.findViewById(R.id.edittext_user_register_email);
+//		ePasswordText=(EditText) this.findViewById(R.id.edittext_user_register_email_password);
+//		eRegisterBtn=(Button) this.findViewById(R.id.button_user_register_email_submit);
+//		eDisplayRbtn=(CheckBox) this.findViewById(R.id.radio_user_register_email_display);
 		
-		mLayout=this.findViewById(R.id.layout_user_register_mobile);
-		mErrorText=(TextView) this.findViewById(R.id.textview_user_register_mobile_error);
-		mUsernameText=(EditText) this.findViewById(R.id.edittext_user_register_mobile);
-		mPasswordText=(EditText) this.findViewById(R.id.edittext_user_register_mobile_password);
-		mRegisterBtn=(Button) this.findViewById(R.id.button_user_register_mobile_submit);
-		mSendBtn=(CountDownTextView) this.findViewById(R.id.button_user_register_mobile_sms);
-		mVerifyCodeText=(EditText) this.findViewById(R.id.edittext_user_register_mobile_code);
-		mDisplayRbtn=(CheckBox) this.findViewById(R.id.radio_user_register_mobile_display);
-		
-		eLayout=this.findViewById(R.id.layout_user_register_email);
-		eErrorText=(TextView) this.findViewById(R.id.textview_user_register_email_error);
-		eUsernameText=(EditText) this.findViewById(R.id.edittext_user_register_email);
-		ePasswordText=(EditText) this.findViewById(R.id.edittext_user_register_email_password);
-		eRegisterBtn=(Button) this.findViewById(R.id.button_user_register_email_submit);
-		eDisplayRbtn=(CheckBox) this.findViewById(R.id.radio_user_register_email_display);
+		mLoginHintText=(TextView) this.findViewById(R.id.textview_user_register_login_hint);
 	}
 
 	@Override
 	protected void initViews(Bundle savedInstanceState) {
 		this.setTitle(R.string.title_register);
-		mRadioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				if(checkedId==R.id.radio_user_register_mobile){
-					mLayout.setVisibility(View.VISIBLE);
-					eLayout.setVisibility(View.GONE);
-				}else{
-					mLayout.setVisibility(View.GONE);
-					eLayout.setVisibility(View.VISIBLE);
-				}
-			}
-			
-		});
+		mLoginHintText.setText(Html.fromHtml(getString(R.string.user_login_hint)));
 		mSendBtn.setOnCountDownListener(new OnCountDownListener(){
 
 			@Override
@@ -313,6 +306,7 @@ public class UserRegisterFragment extends BaseContentFragment{
 	}
 	@Override
 	public void onDestroyView() {
+		this.getCustomActionBar().setBackgroundResource(R.color.actionbar_background);
 		super.onDestroyView();
 	}
 	

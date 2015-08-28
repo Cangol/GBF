@@ -4,6 +4,7 @@ import mobi.cangol.mobile.base.BaseContentFragment;
 import mobi.cangol.mobile.base.FragmentInfo;
 import mobi.cangol.mobile.logging.Log;
 import mobi.cangol.mobile.utils.StringUtils;
+
 import com.azhuoinfo.gbf.R;
 import com.azhuoinfo.gbf.api.ApiContants;
 import com.azhuoinfo.gbf.api.task.ApiTask;
@@ -12,6 +13,8 @@ import com.azhuoinfo.gbf.view.CountDownTextView;
 import com.azhuoinfo.gbf.view.CountDownTextView.OnCountDownListener;
 import com.azhuoinfo.gbf.view.LoadingDialog;
 import com.azhuoinfo.gbf.view.Validator;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,19 +57,20 @@ public class UserForgetFragment extends BaseContentFragment{
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		initViews(savedInstanceState);
-		initData(savedInstanceState);
+		//initViews(savedInstanceState);
+		//initData(savedInstanceState);
 	}
 	
 	@Override
 	protected void findViews(View view) {
-		mErrorText=(TextView) this.findViewById(R.id.textview_user_forget_error);
-		mUsernameText=(EditText) this.findViewById(R.id.edittext_user_forget_username);
-		mVerifyCodeText=(EditText) this.findViewById(R.id.edittext_user_forget_verifycode);
-		mNewPwdText=(EditText) this.findViewById(R.id.edittext_user_forget_newpassword);
-		mRePwdText=(EditText) this.findViewById(R.id.edittext_user_forget_renewpassword);
-		mSubmitBtn=(Button) this.findViewById(R.id.button_user_forget_submit);
-		mSendBtn=(CountDownTextView) this.findViewById(R.id.button_user_forget_send);
+		this.getCustomActionBar().setBackgroundColor(Color.TRANSPARENT);
+//		mErrorText=(TextView) this.findViewById(R.id.textview_user_forget_error);
+//		mUsernameText=(EditText) this.findViewById(R.id.edittext_user_forget_username);
+//		mVerifyCodeText=(EditText) this.findViewById(R.id.edittext_user_forget_verifycode);
+//		mNewPwdText=(EditText) this.findViewById(R.id.edittext_user_forget_newpassword);
+//		mRePwdText=(EditText) this.findViewById(R.id.edittext_user_forget_renewpassword);
+//		mSubmitBtn=(Button) this.findViewById(R.id.button_user_forget_submit);
+//		mSendBtn=(CountDownTextView) this.findViewById(R.id.button_user_forget_send);
 	}
 
 	@Override
@@ -215,5 +219,10 @@ public class UserForgetFragment extends BaseContentFragment{
 	@Override
 	public void onStart() {
 		super.onStart();
+	}
+	@Override
+	public void onDestroyView() {
+		this.getCustomActionBar().setBackgroundResource(R.color.actionbar_background);
+		super.onDestroyView();
 	}
 }

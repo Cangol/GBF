@@ -11,6 +11,7 @@ import mobi.cangol.mobile.service.upgrade.UpgradeService;
 import mobi.cangol.mobile.utils.DeviceInfo;
 import mobi.cangol.mobile.utils.StringUtils;
 import mobi.cangol.mobile.utils.TimeUtils;
+
 import com.azhuoinfo.gbf.AccountVerify;
 import com.azhuoinfo.gbf.AccountVerify.OnLoginListener;
 import com.azhuoinfo.gbf.ModuleMenuIDS;
@@ -19,6 +20,7 @@ import com.azhuoinfo.gbf.api.ApiContants;
 import com.azhuoinfo.gbf.api.task.ApiTask;
 import com.azhuoinfo.gbf.api.task.OnDataLoader;
 import com.azhuoinfo.gbf.db.MessageService;
+import com.azhuoinfo.gbf.fragment.ChatFragment;
 import com.azhuoinfo.gbf.fragment.HomeFragment;
 import com.azhuoinfo.gbf.fragment.MenuFragment;
 import com.azhuoinfo.gbf.fragment.user.UserLoginFragment;
@@ -28,6 +30,7 @@ import com.azhuoinfo.gbf.utils.Constants;
 import com.azhuoinfo.gbf.view.CommonDialog;
 import com.azhuoinfo.gbf.view.CommonDialog.OnButtonClickListener;
 import com.azhuoinfo.gbf.view.MessageBar;
+
 import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -52,6 +55,7 @@ public class MainActivity extends TabNavigationFragmentActivity implements OnLog
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.getCustomActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setStatusBarTintColor(R.color.actionbar_background);
 		setContentView(R.layout.activity_main);
 		this.getCustomActionBar().setTitleGravity(Gravity.CENTER);
@@ -65,6 +69,7 @@ public class MainActivity extends TabNavigationFragmentActivity implements OnLog
 				// 判断升级提示是否检测过，每天只检测一次
 				checkUpgrade();
 			}
+			this.getCustomActionBar().setCustomHomeAsUpIndicator(R.drawable.ic_action_message, R.drawable.ic_back);
 		} else {
 			Log.d("savedInstanceState=" + savedInstanceState);
 		}
@@ -395,5 +400,9 @@ public class MainActivity extends TabNavigationFragmentActivity implements OnLog
 	public void update() {
 		// TODO Auto-generated method stub
 
+	}
+	@Override
+	public void onHomeIndicatorClick() {
+		this.setContentFragment(ChatFragment.class, "ChatFragment", null);
 	}
 }

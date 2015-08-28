@@ -7,12 +7,6 @@ import mobi.cangol.mobile.actionbar.ActionMenu;
 import mobi.cangol.mobile.actionbar.ActionMenuItem;
 import mobi.cangol.mobile.base.BaseActionBarActivity;
 import mobi.cangol.mobile.logging.Log;
-import com.azhuoinfo.gbf.R;
-import com.azhuoinfo.gbf.api.task.DbTask;
-import com.azhuoinfo.gbf.fragment.adapter.GalleryAdapter;
-import com.azhuoinfo.gbf.utils.Constants;
-import com.azhuoinfo.gbf.utils.GalleryUtils;
-import com.azhuoinfo.gbf.view.PromptView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -21,6 +15,12 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.widget.GridView;
 
+import com.azhuoinfo.gbf.R;
+import com.azhuoinfo.gbf.api.task.DbTask;
+import com.azhuoinfo.gbf.fragment.adapter.GalleryAdapter;
+import com.azhuoinfo.gbf.utils.Constants;
+import com.azhuoinfo.gbf.utils.GalleryUtils;
+import com.azhuoinfo.gbf.view.PromptView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
@@ -32,14 +32,17 @@ public class GalleryActivity extends BaseActionBarActivity {
 	private GalleryAdapter mDataAdapter;
 	private boolean mIsMultiplePick=false;
 	private ArrayList<String> mPhotos=new ArrayList<String>();
+	private int mMaxSelected=1;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gallery);
 		this.setActionbarOverlay(false);
+		this.getCustomActionBar().displayUpIndicator();
 		this.getCustomActionBar().setBackgroundResource(R.color.statusbar_bg);
 		this.getCustomActionBar().setTitleGravity(Gravity.CENTER);
 		String action=this.getIntent().getAction();
+		mMaxSelected=this.getIntent().getIntExtra("max_select",1);
 		ArrayList<String> list=this.getIntent().getStringArrayListExtra("select");
 		if(list!=null)
 			mPhotos.addAll(list);
@@ -77,11 +80,11 @@ public class GalleryActivity extends BaseActionBarActivity {
 				Log.d("onClickSelect");
 				String item=(String) mDataAdapter.getItem(position);
 				if(mIsMultiplePick){
-					if(mDataAdapter.getSelected().size()<Constants.MAX_SELECTED||mDataAdapter.getItemSelected(position)){
+					if(mDataAdapter.getSelected().size()<mMaxSelected||mDataAdapter.getItemSelected(position)){
 						mDataAdapter.invertSelected(position);
-						setTitle(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),Constants.MAX_SELECTED));
+						setTitle(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),mMaxSelected));
 					}else{
-						showToast(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),Constants.MAX_SELECTED));
+						showToast(String.format(getString(R.string.title_select),mDataAdapter.getSelected().size(),mMaxSelected));
 					}
 				}else{
 					setActivityResult(item);
@@ -98,6 +101,7 @@ public class GalleryActivity extends BaseActionBarActivity {
 	private void showImageGallery(int position,ArrayList<String> images,ArrayList<String> select){
 		Intent intent=new Intent(this,GalleryImageActivity.class);
 		intent.putExtra("position", position);
+		intent.putExtra("max_select", mMaxSelected);
 		intent.putStringArrayListExtra("images",images);
 		intent.putStringArrayListExtra("select",select);
 		intent.putExtra("isSelected",true);
@@ -116,7 +120,7 @@ public class GalleryActivity extends BaseActionBarActivity {
 	}
 	@Override
 	public void onMenuActionCreated(ActionMenu actionMenu) {
-		//actionMenu.add(new ActionMenuItem(1,R.string.action_menu_done,R.drawable.ic_action_done,1));
+		actionMenu.add(new ActionMenuItem(1,R.string.action_menu_done,-1,1));
 	}
 	@Override
 	public boolean onMenuActionSelected(ActionMenuItem action) {

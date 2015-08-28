@@ -13,10 +13,11 @@
 
     <!-- text color -->
     <color name="text_white">#ffffff</color>
-    <color name="text_black">#000000</color>
-    <color name="text_grey">#D5D5D5</color>
+    <color name="text_black">#333333</color>
+    <color name="text_grey">#6e6e6e</color>
     <color name="text_blue">#256EB1</color>
-
+	<color name="text_yellow">#cf9d26</color>
+	<color name="text_hint">#999999</color>
     <!-- settings color -->
     <color name="settings_text">#333333</color>
     <color name="settings_text_pressed">#ffffff</color>
@@ -25,4 +26,11 @@
     <color name="editext_border_normal">#ea4c89</color>
     <color name="editext_border_focus">#ea4c89</color>
     
+    
+    <color name="btn_white">#ffffff</color>
+    <color name="btn_grey">#474747</color>
+	<color name="btn_yellow">#cf9d26</color>
+	
+	<color name="layout_grey">#2b2b2A</color>
+	<color name="tab_grey">#898989</color>
 </resources>

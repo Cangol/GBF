@@ -1,25 +1,32 @@
 package com.azhuoinfo.gbf.fragment;
 
-import mobi.cangol.mobile.actionbar.ActionMenu;
-import mobi.cangol.mobile.actionbar.ActionMenuItem;
-import mobi.cangol.mobile.actionbar.view.SearchView;
-import mobi.cangol.mobile.actionbar.view.SearchView.OnSearchTextListener;
+import java.util.List;
+
 import mobi.cangol.mobile.base.BaseContentFragment;
 import mobi.cangol.mobile.base.FragmentInfo;
-import com.azhuoinfo.gbf.R;
-import com.azhuoinfo.gbf.view.PromptView;
-import com.azhuoinfo.gbf.view.PromptView.OnPromptClickListener;
+import mobi.cangol.mobile.logging.Log;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+
+import com.azhuoinfo.gbf.R;
+import com.azhuoinfo.gbf.api.ApiContants;
+import com.azhuoinfo.gbf.api.task.ApiTask;
+import com.azhuoinfo.gbf.api.task.OnDataLoader;
+import com.azhuoinfo.gbf.fragment.adapter.BrandAdapter;
+import com.azhuoinfo.gbf.model.Brand;
+import com.azhuoinfo.gbf.view.PromptView;
+import com.azhuoinfo.gbf.view.PromptView.OnPromptClickListener;
 
 public class BrandFragment extends BaseContentFragment{
 	
 	private PromptView mPromptView;
-	private ListView mListView;
-	
+	private GridView mGridView;
+	private BrandAdapter mDataAdapter;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
@@ -28,7 +35,7 @@ public class BrandFragment extends BaseContentFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		View v = inflater.inflate(R.layout.fragment_list_swipe,container,false);
+		View v = inflater.inflate(R.layout.fragment_brand,container,false);
 		return v;
 	}
 	
@@ -48,19 +55,32 @@ public class BrandFragment extends BaseContentFragment{
 	@Override
 	protected void findViews(View view) {
 		mPromptView=(PromptView) findViewById(R.id.promptView);
-		mListView=(ListView) findViewById(R.id.listView);
+		mGridView=(GridView) findViewById(R.id.gridView);
 	}
 
 	@Override
 	protected void initViews(Bundle savedInstanceState) {
 		this.setTitle(R.string.title_brand);
-		
+		mDataAdapter=new BrandAdapter(getActivity());
+		mGridView.setAdapter(mDataAdapter);
+		mGridView.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+				Brand item=(Brand) parent.getItemAtPosition(position);
+				Bundle bundle=new Bundle();
+				bundle.putString("brandId", item.getId());
+				bundle.putString("brandName", item.getName());
+				setContentFragment(GoodsListFragment.class, "GoodListFragment", bundle);
+			}
+			
+		});
 		mPromptView.setOnPromptClickListener(new OnPromptClickListener(){
 
 			@Override
 			public void onClick(View v, int action) {
 				if(mPromptView.ACTION_RETRY==action){
-					
+					getDataList();
 				}
 			}
 			
@@ -69,56 +89,52 @@ public class BrandFragment extends BaseContentFragment{
 
 	@Override
 	protected void initData(Bundle savedInstanceState) {
-		
-	}
-	@Override
-	protected boolean onMenuActionCreated(ActionMenu actionMenu) {
-		actionMenu.add(new ActionMenuItem(1, R.string.action_menu_search, R.drawable.ic_action_search, 1));
-		return true;
-	}
-
-	@Override
-	protected boolean onMenuActionSelected(ActionMenuItem action) {
-		switch (action.getId()) {
-			case 1 :
-				SearchView searchView=this.getCustomActionBar().startSearchMode();
-				searchView.setOnSearchTextListener(new OnSearchTextListener(){
-
-					@Override
-					public boolean onSearchText(String keywords) {
-						getCustomActionBar().stopSearchMode();
-						getSearchList(keywords);
-						return true;
-					}
-					
-				});
-				break;
-		}
-		return super.onMenuActionSelected(action);
-	}
-
-	private void getSearchList(String keywords){
-		
+		getDataList();
 	}
 	
-	@Override
-	public void onStart() {
-		super.onStart();
+	protected void updateViews(List<Brand> list) {
+		if(list!=null&&list.size()>0){
+			mDataAdapter.clear();
+			mDataAdapter.addAll(list);
+			if(mDataAdapter.getCount()>0){
+				mPromptView.showContent();
+			}else{
+				mPromptView.showPrompt(R.string.common_empty);
+			}
+		}else{
+			mPromptView.showPrompt(R.string.common_empty);
+		}
 	}
-	@Override
-	public void onPause() {
-		super.onPause();
-	}
+	
+	private void getDataList(){
+		ApiTask apiTask=ApiTask.build(this.getActivity(),TAG);
+		apiTask.setUrl(ApiContants.instance(getActivity()).getActionUrl(ApiContants.API_POLL_AREA));
+		//apiTask.setParams(ApiContants.instance(getActivity()).brand());
+		apiTask.execute(new OnDataLoader<List<Brand>>(){
 
-	@Override
-	public void onResume() {
-		super.onResume();
-	}
-	@Override
-	public void onDestroyView() {
-		this.getCustomActionBar().stopSearchMode();
-		super.onDestroyView();
+			@Override
+			public void onStart() {
+				if(getActivity()!=null)
+				mPromptView.showLoading();
+			}
 
+			@Override
+			public void onSuccess(int totalPage,final List<Brand> list) {
+				if(getActivity()!=null){
+					updateViews(list);
+				}
+			}
+
+			@Override
+			public void onFailure(String errorCode, String errorResponse) {
+				Log.d(TAG, "errorCode:"+errorCode+","+errorResponse);
+				if(getActivity()!=null){
+					mPromptView.showRetry();
+				}
+				
+			}
+			
+		});
 	}
 	@Override
 	protected FragmentInfo getNavigtionUpToFragment() {

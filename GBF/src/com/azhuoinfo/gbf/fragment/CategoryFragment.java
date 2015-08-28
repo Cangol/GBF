@@ -1,37 +1,49 @@
 package com.azhuoinfo.gbf.fragment;
 
-import mobi.cangol.mobile.actionbar.ActionMenu;
-import mobi.cangol.mobile.actionbar.ActionMenuItem;
-import mobi.cangol.mobile.actionbar.view.SearchView;
-import mobi.cangol.mobile.actionbar.view.SearchView.OnSearchTextListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import mobi.cangol.mobile.base.BaseContentFragment;
 import mobi.cangol.mobile.base.FragmentInfo;
-import com.azhuoinfo.gbf.R;
-import com.azhuoinfo.gbf.view.PromptView;
-import com.azhuoinfo.gbf.view.PromptView.OnPromptClickListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.AdapterView;
+import android.widget.ScrollView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
-public class CategoryFragment extends BaseContentFragment{
-	
-	private PromptView mPromptView;
-	private ListView mListView;
-	
+import com.azhuoinfo.gbf.R;
+import com.azhuoinfo.gbf.fragment.adapter.CategoryAdapter;
+import com.azhuoinfo.gbf.model.Category;
+import com.azhuoinfo.gbf.utils.AnimationUtils;
+import com.azhuoinfo.gbf.view.AllGridView;
+
+public class CategoryFragment extends BaseContentFragment {
+
+	private AllGridView mBagsGridView;
+	private AllGridView mJewelryGridView;
+	private AllGridView mWatchGridView;
+	private TextView mBagTextView;
+	private TextView mWatchTextView;
+	private TextView mJewelryTextView;
+	private CategoryAdapter mBagAdapter;
+	private CategoryAdapter mWatchAdapter;
+	private CategoryAdapter mJewelryAdapter;
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		View v = inflater.inflate(R.layout.fragment_list_swipe,container,false);
+		View v = inflater.inflate(R.layout.fragment_category, container, false);
 		return v;
 	}
-	
+
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
@@ -44,86 +56,120 @@ public class CategoryFragment extends BaseContentFragment{
 		initViews(savedInstanceState);
 		initData(savedInstanceState);
 	}
-	
+
 	@Override
 	protected void findViews(View view) {
-		mPromptView=(PromptView) findViewById(R.id.promptView);
-		mListView=(ListView) findViewById(R.id.listView);
+		mBagTextView = (TextView) this.findViewById(R.id.textview_category_bags);
+		mWatchTextView = (TextView) this.findViewById(R.id.textview_category_watch);
+		mJewelryTextView = (TextView) this.findViewById(R.id.textview_category_jewelry);
+
+		mBagsGridView = (AllGridView) this.findViewById(R.id.allgridview_category_bags);
+		mWatchGridView = (AllGridView) this.findViewById(R.id.allgridview_category_watch);
+		mJewelryGridView = (AllGridView) this.findViewById(R.id.allgridview_category_jewelry);
 	}
 
 	@Override
 	protected void initViews(Bundle savedInstanceState) {
 		this.setTitle(R.string.title_category);
-		
-		mPromptView.setOnPromptClickListener(new OnPromptClickListener(){
+		mBagAdapter = new CategoryAdapter(this.getActivity());
+		mWatchAdapter = new CategoryAdapter(this.getActivity());
+		mJewelryAdapter = new CategoryAdapter(this.getActivity());
+		mBagsGridView.setAdapter(mBagAdapter);
+		mWatchGridView.setAdapter(mWatchAdapter);
+		mJewelryGridView.setAdapter(mJewelryAdapter);
+		mBagTextView.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onClick(View v, int action) {
-				if(mPromptView.ACTION_RETRY==action){
-					
+			public void onClick(View v) {
+				if (mBagsGridView.getVisibility() == View.GONE) {
+					AnimationUtils.expand(mBagsGridView);
+				} else {
+					AnimationUtils.collapse(mBagsGridView);
 				}
 			}
-			
+		});
+
+		mWatchTextView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (mWatchGridView.getVisibility() == View.GONE) {
+					AnimationUtils.expand(mWatchGridView);
+				} else {
+					AnimationUtils.collapse(mWatchGridView);
+				}
+			}
+		});
+
+		mJewelryTextView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (mJewelryGridView.getVisibility() == View.GONE) {
+					AnimationUtils.expand(mJewelryGridView);
+					((ScrollView)getView().findViewById(R.id.scrollview_category)).scrollBy(0, mJewelryGridView.getMeasuredHeight());
+				} else {
+					AnimationUtils.collapse(mJewelryGridView);
+					((ScrollView)getView().findViewById(R.id.scrollview_category)).scrollBy(0, -mJewelryGridView.getMeasuredHeight());
+				}
+			}
+		});
+		mBagsGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Category item = (Category) parent.getItemAtPosition(position);
+				Bundle bundle = new Bundle();
+				bundle.putString("catgoryId", item.getId());
+				replaceFragment(GoodsListFragment.class, "GoodsListFragment", bundle);
+			}
+		});
+		mWatchGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Category item = (Category) parent.getItemAtPosition(position);
+				Bundle bundle = new Bundle();
+				bundle.putString("catgoryId", item.getId());
+				replaceFragment(GoodsListFragment.class, "GoodsListFragment", bundle);
+			}
+		});
+		mJewelryGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Category item = (Category) parent.getItemAtPosition(position);
+				Bundle bundle = new Bundle();
+				bundle.putString("catgoryId", item.getId());
+				replaceFragment(GoodsListFragment.class, "GoodsListFragment", bundle);
+			}
 		});
 	}
 
 	@Override
 	protected void initData(Bundle savedInstanceState) {
-		
-	}
-	@Override
-	protected boolean onMenuActionCreated(ActionMenu actionMenu) {
-		actionMenu.add(new ActionMenuItem(1, R.string.action_menu_search, R.drawable.ic_action_search, 1));
-		return true;
-	}
+		List<Category> list = new ArrayList<Category>();
+		list.add(new Category(null, null, "Tset"));
+		list.add(new Category(null, null, "Tset"));
+		list.add(new Category(null, null, "Tset"));
+		list.add(new Category(null, null, "Tset"));
+		list.add(new Category(null, null, "Tset"));
+		list.add(new Category(null, null, "Tset"));
+		list.add(new Category(null, null, "Tset"));
+		list.add(new Category(null, null, "Tset"));
+		list.add(new Category(null, null, "Tset"));
 
-	@Override
-	protected boolean onMenuActionSelected(ActionMenuItem action) {
-		switch (action.getId()) {
-			case 1 :
-				SearchView searchView=this.getCustomActionBar().startSearchMode();
-				searchView.setOnSearchTextListener(new OnSearchTextListener(){
-
-					@Override
-					public boolean onSearchText(String keywords) {
-						getCustomActionBar().stopSearchMode();
-						getSearchList(keywords);
-						return true;
-					}
-					
-				});
-				break;
-		}
-		return super.onMenuActionSelected(action);
-	}
-
-	private void getSearchList(String keywords){
-		
-	}
-	
-	@Override
-	public void onStart() {
-		super.onStart();
-	}
-	@Override
-	public void onPause() {
-		super.onPause();
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-	}
-	@Override
-	public void onDestroyView() {
-		this.getCustomActionBar().stopSearchMode();
-		super.onDestroyView();
+		mBagAdapter.addAll(list);
+		mWatchAdapter.addAll(list);
+		mJewelryAdapter.addAll(list);
 
 	}
+
 	@Override
 	protected FragmentInfo getNavigtionUpToFragment() {
 		return null;
 	}
+
 	@Override
 	public boolean isCleanStack() {
 		return true;

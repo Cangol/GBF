@@ -1,54 +1,34 @@
 package com.azhuoinfo.gbf.model;
 
-public class Friend {
-	private String friendId;
-	private String status;
-	private String nickname;
+import java.io.Serializable;
+
+public class Friend implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 0L;
+	private String userId;
 	private String avatar;
-	
-	
-	public Friend() {
-		super();
+	private String nickname;
+	public Friend(){}
+	public String getUserId() {
+		return userId;
 	}
-
-
-	public String getFriendId() {
-		return friendId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-
-
-	public void setFriendId(String friendId) {
-		this.friendId = friendId;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-
-	public String getNickname() {
-		return nickname;
-	}
-
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-
 	public String getAvatar() {
 		return avatar;
 	}
-
-
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	
+
 }

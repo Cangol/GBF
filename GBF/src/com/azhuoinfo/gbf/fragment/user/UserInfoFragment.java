@@ -103,9 +103,9 @@ public class UserInfoFragment extends BaseContentFragment{
 		mNicknameText=(TextView) this.findViewById(R.id.textview_user_info_nickname);
 		mMobileText=(TextView) this.findViewById(R.id.textview_user_info_mobile);
 		mEmailText=(TextView) this.findViewById(R.id.textview_user_info_email);
-		mGenderText=(TextView) this.findViewById(R.id.textview_user_info_sex);
+		mGenderText=(TextView) this.findViewById(R.id.textview_user_info_gender);
 		mBirthdayText=(TextView) this.findViewById(R.id.textview_user_info_birthday);
-		mLocationText=(TextView) this.findViewById(R.id.textview_user_info_location);
+		mLocationText=(TextView) this.findViewById(R.id.textview_user_info_address);
 	}
 
 	@Override
@@ -165,22 +165,6 @@ public class UserInfoFragment extends BaseContentFragment{
 			}
 
 		});
-		this.findViewById(R.id.layout_user_info_changelocation).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				showChangeUserLocation(mAccountVerify.getUser().getLocation());
-			}
-
-		});
-		this.findViewById(R.id.layout_user_info_changepwd).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				replaceFragment(UserChangePwdFragment.class);
-			}
-
-		});
 		this.findViewById(R.id.button_user_info_logout).setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -193,6 +177,7 @@ public class UserInfoFragment extends BaseContentFragment{
 
 	@Override
 	protected void initData(Bundle savedInstanceState) {
+		
 	}
 	
 	protected void updateViews(User user) {

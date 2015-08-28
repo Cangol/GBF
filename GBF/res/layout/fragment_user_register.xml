@@ -3,225 +3,188 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fragment_background"
-    android:orientation="vertical" >
-
-    <RadioGroup
-        android:id="@+id/radio_user_register_tab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/radio_user_register_mobile"
-            style="@style/Common_Radio_Tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="@string/register_mobile" />
-      <RadioButton
-            android:id="@+id/radio_user_register_email"
-            style="@style/Common_Radio_Tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/register_email" />
-    </RadioGroup>
+    android:orientation="vertical"
+    android:padding="12dp" >
 
     <LinearLayout
+        android:id="@+id/edittext_user_register_one"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="8dp" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <LinearLayout
-            android:id="@+id/layout_user_register_mobile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="visible" >
-
-            <TextView
-                android:id="@+id/textview_user_register_mobile_error"
-                 style="@style/Common_TextView_Error"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/common_edittext_layout_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_mobile_" />
-
-                <EditText
-                    android:id="@+id/edittext_user_register_mobile"
-                    style="@style/Common_EditText.Transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:singleLine="true"
-                    android:text="18201952413"
-                    android:hint="@string/register_mobile_hint" >
-                </EditText>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical|right"
-                android:orientation="horizontal" >
-
-                <EditText
-                    android:id="@+id/edittext_user_register_mobile_code"
-                    style="@style/Common_EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:text="111111"
-                    android:hint="@string/register_verifycode_hint" />
-
-                <com.azhuoinfo.gbf.view.CountDownTextView
-                    android:id="@+id/button_user_register_mobile_sms"
-                    android:layout_width="80dp"
-                    android:layout_height="38dp"
-                    android:layout_marginLeft="8dp"
-                    android:gravity="center"
-                    android:text="@string/register_verifycode" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/common_edittext_layout_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_password_" />
-
-                <EditText
-                    android:id="@+id/edittext_user_register_mobile_password"
-                    style="@style/Common_EditText.Transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="8dp"
-                    android:singleLine="true"
-                    android:hint="@string/register_password_hint"
-                    android:text="111111"
-                    android:inputType="textPassword" />
-                 <CheckBox
-                    android:id="@+id/radio_user_register_mobile_display"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@null"/>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/button_user_register_mobile_submit"
-                style="@style/Common_Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center"
-                android:text="@string/user_register" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_user_register_email"
+        <EditText
+            android:id="@+id/edittext_user_register_nickname"
+            style="@style/Common_EditText.Transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone" >
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/user_nickname_hint"
+            android:singleLine="true" >
+        </EditText>
+
+        <include layout="@layout/common_view_line_white" />
+
+        <TextView
+            android:id="@+id/textview_user_register_nickname_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/edittext_user_register_mobile"
+            style="@style/Common_EditText.Transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/user_mobile_hint"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+
+        <include layout="@layout/common_view_line_white" />
+
+        <TextView
+            android:id="@+id/textview_user_register_mobile_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/edittext_user_register_verifycode"
+                    style="@style/Common_EditText.Transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:hint="@string/user_verifycode_hint"
+                    android:singleLine="true" />
+
+                <include layout="@layout/common_view_line_white" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textview_user_register_email_error"
-                style="@style/Common_TextView_Error"
-                android:layout_width="match_parent"
+                android:id="@+id/image_user_register_verifycode"
+                style="@style/Button.Grey"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/common_edittext_layout_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_email_" />
-
-                <EditText
-                    android:id="@+id/edittext_user_register_email"
-                    style="@style/Common_EditText.Transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:singleLine="true"
-                    android:text="wxw404@qq.com"
-                    android:hint="@string/register_email_hint" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/common_edittext_layout_bg"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_password_" />
-
-                <EditText
-                    android:id="@+id/edittext_user_register_email_password"
-                    style="@style/Common_EditText.Transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:singleLine="true"
-                    android:hint="@string/register_password_hint"
-                    android:text="111111"
-                    android:inputType="textPassword" />
-
-                <CheckBox
-                    android:id="@+id/radio_user_register_email_display"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@null"/>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/button_user_register_email_submit"
-                style="@style/Common_Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center"
-                android:text="@string/user_register" />
+                android:padding="10dp"
+                android:text="@string/user_send_verifycode" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button_user_register_one"
+            style="@style/Button.Yellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/user_register_one" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/edittext_user_register_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <EditText
+            android:id="@+id/edittext_user_register_passsword"
+            style="@style/Common_EditText.Transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_password_hint"
+            android:singleLine="true" >
+        </EditText>
+
+        <include layout="@layout/common_view_line_white" />
+
+        <TextView
+            android:id="@+id/textview_user_register_password_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/edittext_user_register_repassword"
+            style="@style/Common_EditText.Transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/user_repassword_hint"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+
+        <include layout="@layout/common_view_line_white" />
+
+        <TextView
+            android:id="@+id/edittext_user_register_repassword_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button_user_register_two"
+            style="@style/Button.Yellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/user_register_two" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/edittext_user_register_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <EditText
+            android:id="@+id/edittext_user_register_invitecode"
+            style="@style/Common_EditText.Transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/user_username_hint"
+            android:singleLine="true" >
+        </EditText>
+
+        <include layout="@layout/common_view_line_white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_uninvitecode_hint" />
+
+        <Button
+            android:id="@+id/button_user_register_three"
+            style="@style/Button.Yellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/user_register_three" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textview_user_register_login_hint"
+        style="@style/TextView.White"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/user_login_hint" />
+
 </LinearLayout>
