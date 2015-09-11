@@ -34,7 +34,15 @@ public class Validator {
 		}
 		return true;
 	}
-
+	public static boolean validateEquals(TextView view,String dst) {
+		if (TextUtils.isEmpty(view.getText())) {
+			return false;
+		}
+		if(!dst.equals(view.getText())){
+			return false;
+		}
+		return true;
+	}
 	public static boolean validateContent(TextView view) {
 		String text = view.getText().toString().trim();
 		if (text.length() >= 10 && text.length() <= 500) {

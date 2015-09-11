@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="vertical">
     <ProgressBar
         android:id="@+id/common_loading_progressbar"
         style="@android:style/Widget.ProgressBar.Small"
@@ -15,7 +15,7 @@
         style="@style/Common_TextView_Mark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dip"
+        android:layout_marginTop="4dip"
         android:text="@string/common_loading" />
 	
 </LinearLayout>

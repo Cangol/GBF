@@ -12,7 +12,7 @@ import com.azhuoinfo.gbf.R;
 import com.azhuoinfo.gbf.view.PromptView;
 import com.azhuoinfo.gbf.view.PromptView.OnPromptClickListener;
 
-public class ChatFragment extends BaseContentFragment{
+public class GoodsDetailsFragment extends BaseContentFragment{
 	
 	private PromptView mPromptView;
 	private ListView mListView;
@@ -66,6 +66,10 @@ public class ChatFragment extends BaseContentFragment{
 
 	@Override
 	protected void initData(Bundle savedInstanceState) {
+		
+	}
+
+	private void getSearchList(String keywords){
 		
 	}
 	

@@ -26,6 +26,7 @@ public class AnimationUtils {
 		};
 		a.setDuration(ANIMATION_DURATION);
 		view.startAnimation(a);
+		
 	}
 
 	public static void collapse(final View view) {

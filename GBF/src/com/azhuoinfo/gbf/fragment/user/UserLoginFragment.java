@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.azhuoinfo.gbf.AccountVerify;
@@ -24,6 +25,7 @@ import com.azhuoinfo.gbf.api.task.ApiTask;
 import com.azhuoinfo.gbf.api.task.OnDataLoader;
 import com.azhuoinfo.gbf.model.UserAuth;
 import com.azhuoinfo.gbf.utils.Constants;
+import com.azhuoinfo.gbf.utils.VerifyCode;
 import com.azhuoinfo.gbf.view.LoadingDialog;
 import com.azhuoinfo.gbf.view.Validator;
 
@@ -33,9 +35,10 @@ public class UserLoginFragment extends BaseContentFragment{
 	private EditText mPasswordText;
 	private EditText mVerifyCodeText;
 	private TextView mForgetText;
+	private ImageView mVerifyCodeImageView;
 	private Button mLoginBtn;
 	private TextView mRegisterText;
-
+	private String mVerifyCode;
 	private AccountVerify mAccountVerify;
 	private ApiContants mApiContants;
 	//private SocialLoginProvider mSocialLoginProvider;
@@ -73,6 +76,8 @@ public class UserLoginFragment extends BaseContentFragment{
 		mVerifyCodeText=(EditText) this.findViewById(R.id.edittext_user_login_verifycode);
 		mForgetText=(TextView) this.findViewById(R.id.textview_user_login_forget);
 		
+		mVerifyCodeImageView=(ImageView) this.findViewById(R.id.imageview_user_login_verifycode);
+		
 		mLoginBtn=(Button) this.findViewById(R.id.button_user_login_login);
 		mRegisterText=(TextView) this.findViewById(R.id.textview_user_login_register_hint);
 		
@@ -82,6 +87,17 @@ public class UserLoginFragment extends BaseContentFragment{
 	protected void initViews(Bundle savedInstanceState) {
 		this.setTitle(R.string.title_login);
 		mRegisterText.setText(Html.fromHtml(getString(R.string.user_register_hint)));
+		mVerifyCode=VerifyCode.getInstance().createCode();
+		mVerifyCodeImageView.setImageBitmap(VerifyCode.getInstance().createBitmap(mVerifyCode));
+		mVerifyCodeImageView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mVerifyCode=VerifyCode.getInstance().createCode();
+				mVerifyCodeImageView.setImageBitmap(VerifyCode.getInstance().createBitmap(mVerifyCode));
+			}
+
+		});
 		mLoginBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -144,9 +160,7 @@ public class UserLoginFragment extends BaseContentFragment{
 		if (!Validator.validateNull(mUsernameText)) {
 			showToast(R.string.user_validate_mobile_notnull);
 			return false;
-		}else if(Validator.validateMobile(mUsernameText)||Validator.validateEmail(mUsernameText)){
-			
-		}else{
+		}else if(Validator.validateMobile(mUsernameText)){
 			showToast(R.string.user_validate_mobile_format);
 			return false;
 		}
@@ -154,12 +168,13 @@ public class UserLoginFragment extends BaseContentFragment{
 		if (!Validator.validateNull(mPasswordText)) {
 			showToast(R.string.user_validate_password_notnull);
 			return false;
-		}else if(!Validator.validatePassword(mPasswordText)){
-			showToast(R.string.user_validate_password_format);
-			return false;
 		}
+		
 		if (!Validator.validateNull(mVerifyCodeText)) {
 			showToast(R.string.user_validate_verifycode_notnull);
+			return false;
+		}else if(!Validator.validateEquals(mVerifyCodeText,mVerifyCode)){
+			showToast(R.string.user_validate_verifycode_invalid);
 			return false;
 		}
 		return true;

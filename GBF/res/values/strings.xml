@@ -189,4 +189,12 @@
         <item>男士</item>
         <item>女士</item>
     </string-array>
+    
+	<string name="order_delivery_receiver">收货人:</string>
+	<string name="order_delivery_address">收货地址:</string>
+	<string name="order_delivery_info">物流信息</string>
+	<string name="order_delivery_no">运单单号:</string>
+	<string name="order_delivery_method">发货方式:</string>
+	<string name="order_delivery_company">物流公司:</string>
+	<string name="order_delivery_track">物流跟踪:</string>
 </resources>

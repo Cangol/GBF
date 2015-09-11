@@ -162,6 +162,7 @@
     <string name="user_validate_renewpassword_notnull">重复新密码不能为空</string>
     <string name="user_validate_renewpassword_notsame">新密码两次输入不一致</string>
     <string name="user_validate_verifycode_notnull">验证码不能为空</string>
+    <string name="user_validate_verifycode_invalid">验证码不正确</string>
     <string name="user_validate_email_notnull">邮箱不能为空</string>
     <string name="user_validate_email_format">邮箱格式不正确</string>
     <string name="user_validate_mobile_notnull">手机号不能为空</string>

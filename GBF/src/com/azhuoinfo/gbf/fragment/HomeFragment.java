@@ -1,6 +1,6 @@
 package com.azhuoinfo.gbf.fragment;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import mobi.cangol.mobile.actionbar.ActionMenu;
 import mobi.cangol.mobile.actionbar.ActionMenuItem;
@@ -8,6 +8,7 @@ import mobi.cangol.mobile.actionbar.view.SearchView;
 import mobi.cangol.mobile.actionbar.view.SearchView.OnSearchTextListener;
 import mobi.cangol.mobile.base.BaseContentFragment;
 import mobi.cangol.mobile.base.FragmentInfo;
+import mobi.cangol.mobile.logging.Log;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.azhuoinfo.gbf.R;
+import com.azhuoinfo.gbf.api.ApiContants;
+import com.azhuoinfo.gbf.api.task.ApiTask;
+import com.azhuoinfo.gbf.api.task.OnDataLoader;
 import com.azhuoinfo.gbf.fragment.adapter.BannerAdapter;
 import com.azhuoinfo.gbf.fragment.adapter.GoodsAdapter;
 import com.azhuoinfo.gbf.fragment.publish.PublishCategoryFragment;
@@ -37,7 +41,6 @@ public class HomeFragment extends BaseContentFragment {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 	}
 
 	@Override
@@ -113,6 +116,9 @@ public class HomeFragment extends BaseContentFragment {
 			@Override
 			public void onItemClick(android.widget.AdapterView<?> parent, View view, int position, long id) {
 				Goods item = (Goods) parent.getItemAtPosition(position);
+				Bundle bundle=new Bundle();
+				bundle.putString("goodsId", item.getId());
+				replaceFragment(GoodsDetailsFragment.class,"GoodsDetailsFragment",bundle);
 			}
 		});
 		mPromptView.setOnPromptClickListener(new OnPromptClickListener() {
@@ -120,12 +126,13 @@ public class HomeFragment extends BaseContentFragment {
 			@Override
 			public void onClick(View v, int action) {
 				if (mPromptView.ACTION_RETRY == action) {
-
+					getGoodsList();
 				}
 			}
 
 		});
-		getSearchList("");
+		getBannerList();
+		getGoodsList();
 	}
 
 	@Override
@@ -161,7 +168,7 @@ public class HomeFragment extends BaseContentFragment {
 				@Override
 				public boolean onSearchText(String keywords) {
 					getCustomActionBar().stopSearchMode();
-					getSearchList(keywords);
+					doSearch(keywords);
 					return true;
 				}
 
@@ -170,30 +177,88 @@ public class HomeFragment extends BaseContentFragment {
 		}
 		return super.onMenuActionSelected(action);
 	}
-
-	private void getSearchList(String keywords) {
-		ArrayList<Banner> list = new ArrayList<Banner>();
-		list.add(new Banner("1", "Bags", "", "drawable://" + R.drawable.bg_category_bag));
-		list.add(new Banner("2", "Watches", "", "drawable://" + R.drawable.bg_category_watch));
-		list.add(new Banner("3", "Jewelry", "", "drawable://" + R.drawable.bg_category_jewelry));
-		mBannerAdapter.addAll(list);
-		mBannerGallery.setAdapter(mBannerAdapter, list.size());
-		mBannerGallery.startFadeOut(3000L);
+	protected void updateViews(List<Goods> list) {
+		if(list!=null&&list.size()>0){
+			mGoodsAdapter.clear();
+			mGoodsAdapter.addAll(list);
+			if(mGoodsAdapter.getCount()>0){
+				mPromptView.showContent();
+			}else{
+				mPromptView.showPrompt(R.string.common_empty);
+			}
+		}else{
+			mPromptView.showPrompt(R.string.common_empty);
+		}
+	}
+	protected void doSearch(String keywords) {
+		Bundle bundle=new Bundle();
+		bundle.putString("keywords", keywords);
+		replaceFragment(SearchFragment.class,"SearchFragment",bundle);
+		
 	}
 
-	@Override
-	public void onStart() {
-		super.onStart();
-	}
+	private void getBannerList() {
+		ApiTask apiTask=ApiTask.build(this.getActivity(),TAG);
+		apiTask.setUrl(ApiContants.instance(getActivity()).getActionUrl(ApiContants.API_POLL_AREA));
+		//apiTask.setParams(ApiContants.instance(getActivity()).bannerList());
+		apiTask.execute(new OnDataLoader<List<Banner>>(){
 
-	@Override
-	public void onPause() {
-		super.onPause();
-	}
+			@Override
+			public void onStart() {
+				if(getActivity()!=null)
+				mPromptView.showLoading();
+			}
 
-	@Override
-	public void onResume() {
-		super.onResume();
+			@Override
+			public void onSuccess(int totalPage,final List<Banner> list) {
+				if(getActivity()!=null){
+					mBannerAdapter.addAll(list);
+					mBannerGallery.setAdapter(mBannerAdapter, list.size());
+					mBannerGallery.startFadeOut(3000L);
+				}
+			}
+
+			@Override
+			public void onFailure(String errorCode, String errorResponse) {
+				Log.d(TAG, "errorCode:"+errorCode+","+errorResponse);
+				if(getActivity()!=null){
+					mPromptView.showRetry();
+				}
+				
+			}
+			
+		});
+		
+	}
+	private void getGoodsList() {
+		ApiTask apiTask=ApiTask.build(this.getActivity(),TAG);
+		apiTask.setUrl(ApiContants.instance(getActivity()).getActionUrl(ApiContants.API_POLL_AREA));
+		//apiTask.setParams(ApiContants.instance(getActivity()).goodsList());
+		apiTask.execute(new OnDataLoader<List<Goods>>(){
+
+			@Override
+			public void onStart() {
+				if(getActivity()!=null)
+				mPromptView.showLoading();
+			}
+
+			@Override
+			public void onSuccess(int totalPage,final List<Goods> list) {
+				if(getActivity()!=null){
+					updateViews(list);
+				}
+			}
+
+			@Override
+			public void onFailure(String errorCode, String errorResponse) {
+				Log.d(TAG, "errorCode:"+errorCode+","+errorResponse);
+				if(getActivity()!=null){
+					mPromptView.showRetry();
+				}
+				
+			}
+			
+		});
 	}
 
 	@Override
