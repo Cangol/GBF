@@ -78,8 +78,6 @@
     <string name="user_nickname_hint">请输入昵称</string>
     <string name="user_mobile_hint">请输入手机号</string>
     <string name="user_verifycode_hint">请输入验证码</string>
-    <string name="user_password_hint">请输入密码</string>
-    <string name="user_repassword_hint">请确认输入密码</string>
     <string name="user_send_verifycode">发送验证码</string>
     <string name="user_invitecode_hint">请输入四位邀请码</string>
     <string name="user_uninvitecode_hint">没有注册码可以直接点注册完成</string>

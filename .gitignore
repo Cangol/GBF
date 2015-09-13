@@ -5,6 +5,7 @@
 # files for the dex VM
 *.dex
 
+
 # Java class files
 *.class
 
@@ -15,6 +16,10 @@ gen/
 # Gradle files
 .gradle/
 build/
+gradle/
+gradlew.bat
+gradlew
+settings.gradle
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -27,9 +32,6 @@ proguard/
 .project
 .settings
 eclipsebin
-
-# Log Files
-*.log
 
 build
 out
@@ -47,4 +49,4 @@ classes
 
 obj
 
-.DS_Store
+.DS_Stores
