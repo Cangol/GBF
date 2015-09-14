@@ -46,6 +46,7 @@ public class MobileApplication extends CoreApplication {
 		this.setDevMode(Constants.DEVMODE);
 		super.onCreate();
 		init();
+        Log.d("test");
 	}
 
 	/**
