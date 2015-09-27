@@ -55,7 +55,7 @@ public class MainActivity extends TabNavigationFragmentActivity implements OnLog
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.getCustomActionBar().setDisplayHomeAsUpEnabled(true);
+		this.getCustomActionBar().setDisplayShowHomeEnabled(true);
 		this.setStatusBarTintColor(R.color.actionbar_background);
 		setContentView(R.layout.activity_main);
 		this.getCustomActionBar().setTitleGravity(Gravity.CENTER);
