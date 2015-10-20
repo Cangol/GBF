@@ -92,12 +92,12 @@ public class GalleryImageActivity extends BaseActionBarActivity {
 			@Override
 			public void onClickImage(int position) {
 				if(getCustomActionBar().isShow()){
-					getCustomActionBar().setShow(false);
+                    setActionbarShow(false);
 					if(mDataAdapter.isSelected())
 						mToolsBar.setVisibility(View.GONE);
 				}else{
-					getCustomActionBar().setShow(true);
-					if(mDataAdapter.isSelected())
+                    setActionbarShow(true);
+                    if(mDataAdapter.isSelected())
 						mToolsBar.setVisibility(View.VISIBLE);
 				}
 			}

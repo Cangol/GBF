@@ -18,5 +18,4 @@ public interface ModuleMenuIDS {
 	 */
 	public static final int MODULE_MINE = 3;
 	
-
 }

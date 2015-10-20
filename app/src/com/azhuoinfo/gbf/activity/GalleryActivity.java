@@ -120,7 +120,7 @@ public class GalleryActivity extends BaseActionBarActivity {
 	}
 	@Override
 	public void onMenuActionCreated(ActionMenu actionMenu) {
-		actionMenu.add(new ActionMenuItem(1,R.string.action_menu_done,-1,1));
+		actionMenu.addMenu(1,R.string.action_menu_done,-1,1);
 	}
 	@Override
 	public boolean onMenuActionSelected(ActionMenuItem action) {

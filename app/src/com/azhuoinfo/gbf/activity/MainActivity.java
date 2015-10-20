@@ -401,8 +401,4 @@ public class MainActivity extends TabNavigationFragmentActivity implements OnLog
 		// TODO Auto-generated method stub
 
 	}
-	@Override
-	public void onHomeIndicatorClick() {
-		this.setContentFragment(ChatFragment.class, "ChatFragment", null);
-	}
 }

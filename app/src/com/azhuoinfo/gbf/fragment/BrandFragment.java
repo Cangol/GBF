@@ -61,6 +61,7 @@ public class BrandFragment extends BaseContentFragment{
 	@Override
 	protected void initViews(Bundle savedInstanceState) {
 		this.setTitle(R.string.title_brand);
+        this.getCustomActionBar().setDisplayShowHomeEnabled(false);
 		mDataAdapter=new BrandAdapter(getActivity());
 		mGridView.setAdapter(mDataAdapter);
 		mGridView.setOnItemClickListener(new OnItemClickListener(){
@@ -136,7 +137,14 @@ public class BrandFragment extends BaseContentFragment{
 			
 		});
 	}
-	@Override
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        this.getCustomActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
 	protected FragmentInfo getNavigtionUpToFragment() {
 		return null;
 	}

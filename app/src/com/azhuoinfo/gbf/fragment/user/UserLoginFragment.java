@@ -181,7 +181,7 @@ public class UserLoginFragment extends BaseContentFragment{
 	}
 	@Override
 	protected boolean onMenuActionCreated(ActionMenu actionMenu) {
-		actionMenu.add(new ActionMenuItem(1, R.string.action_menu_register, -1, 1));
+		actionMenu.addMenu(1, R.string.action_menu_register, -1, 1);
 		return true;
 	}
 

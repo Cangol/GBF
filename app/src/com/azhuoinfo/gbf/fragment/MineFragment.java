@@ -72,6 +72,7 @@ public class MineFragment extends BaseContentFragment{
 	@Override
 	protected void initViews(Bundle savedInstanceState) {
 		this.setTitle(R.string.title_mine);
+        this.getCustomActionBar().setDisplayShowHomeEnabled(false);
 		this.findViewById(R.id.layout_mine_top).setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -176,6 +177,12 @@ public class MineFragment extends BaseContentFragment{
 	public void onResume() {
 		super.onResume();
 	}
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        this.getCustomActionBar().setDisplayShowHomeEnabled(true);
+    }
 	@Override
 	protected FragmentInfo getNavigtionUpToFragment() {
 		return null;

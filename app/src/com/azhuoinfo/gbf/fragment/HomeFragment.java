@@ -142,7 +142,7 @@ public class HomeFragment extends BaseContentFragment {
 
 	@Override
 	protected boolean onMenuActionCreated(ActionMenu actionMenu) {
-		actionMenu.add(new ActionMenuItem(1, R.string.action_menu_search, R.drawable.ic_action_search, 1));
+		actionMenu.addMenu(1, R.string.action_menu_search, R.drawable.ic_action_search, 1);
 		return true;
 	}
 
@@ -277,4 +277,10 @@ public class HomeFragment extends BaseContentFragment {
 	public boolean isCleanStack() {
 		return true;
 	}
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.setContentFragment(ChatFragment.class, "ChatFragment", null);
+        return true;
+    }
 }

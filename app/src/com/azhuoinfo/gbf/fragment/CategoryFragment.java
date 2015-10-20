@@ -71,6 +71,7 @@ public class CategoryFragment extends BaseContentFragment {
 	@Override
 	protected void initViews(Bundle savedInstanceState) {
 		this.setTitle(R.string.title_category);
+        this.getCustomActionBar().setDisplayShowHomeEnabled(false);
 		mBagAdapter = new CategoryAdapter(this.getActivity());
 		mWatchAdapter = new CategoryAdapter(this.getActivity());
 		mJewelryAdapter = new CategoryAdapter(this.getActivity());
@@ -165,6 +166,11 @@ public class CategoryFragment extends BaseContentFragment {
 
 	}
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        this.getCustomActionBar().setDisplayShowHomeEnabled(true);
+    }
 	@Override
 	protected FragmentInfo getNavigtionUpToFragment() {
 		return null;
